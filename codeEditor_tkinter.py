@@ -3,7 +3,6 @@ from tkinter import messagebox, scrolledtext, filedialog
 import mysql.connector
 import subprocess
 import traceback
-
 # Database connection 
 def connect_db():
     return mysql.connector.connect(
@@ -12,17 +11,14 @@ def connect_db():
         password="Akash123",
         database="CodeEditor"
     )
-
 # user registration window
 def register():
     def submit():
         username = username_entry.get()
         password = password_entry.get()
-        
         if not username or not password:
             messagebox.showerror("Error", "All fields are required!")
             return
-        
         db = connect_db()
         cursor = db.cursor()
         try:
@@ -33,7 +29,6 @@ def register():
         except mysql.connector.IntegrityError:
             messagebox.showerror("Error", "Username already exists!")
         db.close()
-
     reg_window = tk.Toplevel(root)
     reg_window.title("Register")
     tk.Label(reg_window, text="Username:").pack()
@@ -43,7 +38,6 @@ def register():
     password_entry = tk.Entry(reg_window, show="*")
     password_entry.pack()
     tk.Button(reg_window, text="Register", command=submit).pack()
-
 # After register login with same credentials
 def login():
     def submit():
@@ -77,7 +71,6 @@ def login():
     password_entry = tk.Entry(login_window, show="*")
     password_entry.pack()
     tk.Button(login_window, text="Login", command=submit).pack()
-
 # Code Editor IDE
 def open_code_editor():
     def run_code():
