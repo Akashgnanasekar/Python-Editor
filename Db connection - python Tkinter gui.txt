@@ -1,0 +1,30 @@
+Db connection - python Tkinter gui
+
+ create database codeEditor;
+
+ use codeEditor;
+
+# user registered details
+
+ CREATE TABLE users (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     username VARCHAR(255) UNIQUE NOT NULL,
+    ->     password VARCHAR(255) NOT NULL
+    -> );
+
+# user logged in details + time
+
+ CREATE TABLE logged_in_users (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     username VARCHAR(255) NOT NULL,
+    ->     login_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    -> );
+
+# user's saved code 
+
+ CREATE TABLE user_code (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     username VARCHAR(255) NOT NULL,
+    ->     code TEXT NOT NULL,
+    ->     saved_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    -> );
